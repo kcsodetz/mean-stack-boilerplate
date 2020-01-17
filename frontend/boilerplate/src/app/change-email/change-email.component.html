@@ -1,0 +1,48 @@
+<div class="p-2 profile animated fadeInUp d-flex justify-content-center">
+  <mdb-card class="content" style="width: 22rem;">
+    <mdb-card-body>
+      <form (submit)="onSubmitEmail(h)" #h=ngForm [formGroup]="changeEmailForm">
+        <p class="h4 mb-4">Change Email</p>
+        <div class="form-group">
+        <p class="h6 mb-4">Current Email: {{currentEmail}}</p>
+          <label>New Email</label>
+          <input type="text" placeholder="New Email" class="form-control" formControlName="email"
+            [ngClass]="{ 'is-invalid': submitted_email && form_email.email.errors }" />
+          <div *ngIf="submitted_email && form_email.email.errors" class="invalid-feedback">
+            <div *ngIf="form_email.email.errors.required">Please Enter an Email</div>
+            <div *ngIf="form_email.email.errors.email">Invalid Email</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Confirm Email</label>
+          <input type="text" placeholder="Confirm Email" class="form-control" formControlName="confirmEmail"
+            [ngClass]="{ 'is-invalid': submitted_email && changeEmailForm.hasError('notSame') }" />
+          <div *ngIf="submitted_email && changeEmailForm.hasError('notSame')" class="invalid-feedback">
+            <div *ngIf="changeEmailForm.hasError('notSame')">Emails Do Not Match</div>
+          </div>
+          <button mdbBtn color="info" block="true" class="my-4" type="submit">Change Email</button>
+        </div>
+      </form>
+
+      <!-- Alert Toasts -->
+      <div *ngIf="response_msg === 'fatal_error'" class="alert alert-danger" role="alert">
+        Fatal Error. Please Try Again Later.
+      </div>
+      <div *ngIf="response_msg === 'duplicate'" class="alert alert-danger" role="alert">
+        Duplicate Email: Someone is using that email. Please choose another mailing address.
+      </div>
+    <div *ngIf="response_msg === 'no_change'" class="alert alert-warning" role="alert">
+        Email you have entered is the same as before. No changes have been applied.
+      </div>
+      <div *ngIf="response_msg === 'complete_email'" class="alert alert-success" role="alert">
+        Email Successfully Changed.
+      </div>
+
+      <!-- Home -->
+      <p>Done?
+        <a routerLink="/home">Home</a>
+      </p>
+
+    </mdb-card-body>
+  </mdb-card>
+</div>

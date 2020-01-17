@@ -1,0 +1,123 @@
+# MEAN Stack Boilerplate
+
+This MEAN (Mongo, Express, Angular, and Node) Stack boilerplate is what I use for all my web projects.
+
+## Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+
+### Prerequisites
+
+1) Node package manager
+
+    ```sh
+    sudo apt-get install nodejs
+    ```
+
+2) Create a mongodb cluster and get the nodeJS [connection driver](https://docs.atlas.mongodb.com/driver-connection/).
+
+### Running a Dev Environment
+
+1) Create a `.env` file in `backend/`
+
+    ```sh
+    touch backend/.env
+    ```
+
+2) Add the following variables and values to the `.env` file
+
+    ```file
+    MONGODB_HOST=mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[database][?options]]
+    PORT=[port number]
+    JWT_SECRET=[JSON web token]
+    EMAIL_ADDRESS=[email address]
+    EMAIL_PASS=[email password]
+    TEST_USERNAME=[unit test name]
+    TEST_PASSWORD=[unit test password]
+    TEST_EMAIL=[unit test email]
+    ```
+
+   * MONGODB_HOST - [Connection driver](https://docs.atlas.mongodb.com/driver-connection/) for mongodb.
+   * PORT - Backend port number.
+   * JWT_SECRET - JWT secret for token authentication.
+   * EMAIL_ADDRESS - Email address for mail notifications (user registration, user password reset, etc).
+   * EMAIL_PASS - Password for above email address.
+   * TEST_USERNAME - Username for unit testing.
+   * TEST_PASSWORD - Password for unit testing.
+   * TEST_EMAIL - Email for unit testing.
+
+3) To start the backend, navigate to `backend/` and run:
+
+    ```sh
+    $ node app.js
+    The application is running on localhost:[port_num]
+    ```
+
+4) To start the frontend, open a new terminal and navigate to `frontend/boilerplate/` and run:
+  
+   ```sh
+   $ ng serve -o
+   ** Angular Live Development Server is listening on localhost:4200, open your browser on http://localhost:4200/ **
+
+   Time: 22540ms
+   chunk {main} main.js, main.js.map (main) 114 kB [initial] [rendered]
+   chunk {polyfills} polyfills.js, polyfills.js.map (polyfills) 236 kB [initial] [rendered]
+   chunk {runtime} runtime.js, runtime.js.map (runtime) 6.08 kB [entry] [rendered]
+   chunk {scripts} scripts.js, scripts.js.map (scripts) 1.88 kB  [rendered]
+   chunk {styles} styles.js, styles.js.map (styles) 2.06 MB [initial] [rendered]
+   chunk {vendor} vendor.js, vendor.js.map (vendor) 5.34 MB [initial] [rendered]
+     ℹ ｢wdm｣: Compiled successfully.
+   ```
+
+## Running the tests
+
+Tests are done with the the mocha and chai frameworks. Only back end tests have been written. To run, navigate to the root of the `backend/` folder and run:
+
+```sh
+$ npm test
+USER TESTS
+------------------------------------------------------------------------
+
+
+The application is running on localhost:5000
+  Test Register
+    Register without password
+      ✓ Should return 400
+    Register without username
+      ✓ Should return 400
+    Register without email
+      ✓ Should return 400
+    Register with invalid email
+      ✓ Should return 400
+    Register with short username
+      ✓ Should return 400
+    Register with short password
+      ✓ Should return 400
+    Register with correct info
+      ✓ Should return 200
+    Register duplicate username
+      ✓ Should return 400
+    Register duplicate email
+      ✓ Should return 400
+Test /user/register completed.
+
+
+  9 passing (1s)
+
+...
+```
+
+## Built With
+
+* [MongoDB](https://www.mongodb.com/) - Database
+* [AngularJS](https://angularjs.org/) - Frontend framework
+* [ExpressJS](https://expressjs.com/) - Backend framework
+* [NodeJS](https://nodejs.org/en/) - JS runtime environment
+
+## Authors
+
+* **Ken Sodetz** - ** - [PurpleBooth](https://github.com/PurpleBooth)
+
+See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+
+## Acknowledgments

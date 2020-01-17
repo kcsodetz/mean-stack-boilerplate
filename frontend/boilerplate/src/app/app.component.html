@@ -1,0 +1,61 @@
+<!-- Main App Contianer -->
+<div class="main-container">
+    <!--Navbar-->
+    <mdb-navbar SideClass="navbar navbar-expand-lg tableColor" style="padding:0;">
+        <!-- Navbar brand -->
+        <mdb-navbar-brand><a href="#">
+                <h4 class="title"><i class="fa fa-laptop-code"></i> My App</h4>
+            </a></mdb-navbar-brand>
+        <!-- Collapsible content -->
+        <links style="width: 100%; padding: 0;">
+            <div class="col">
+            </div>
+            <ul class="navbar-nav" style=" justify-content: center; width: auto; padding: 0;">
+                <li class="nav-item">
+                    <a class="nav-link waves-light text-white" routerLink='/home' mdbWavesEffect>Home<span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link waves-light text-white" routerLink='/about' mdbWavesEffect>About</a>
+                </li>
+                <!-- Dropdown -->
+                <li *ngIf="userAuthed" class="nav-item dropdown" dropdown>
+                    <a dropdownToggle mdbWavesEffect type="none "
+                        class="nav-link dropdown-toggle waves-light text-white" mdbWavesEffect>
+                        {{username}}<span class="caret"></span></a>
+                    <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#" routerLink="/change-email">Change
+                            Email</a>
+                        <a class="dropdown-item waves-light" mdbWavesEffect href="#"
+                            routerLink="/change-password">Change
+                            Password</a>
+                        <div class="divider dropdown-divider"></div>
+                        <a (click)="logout()" routerlinkactive="active" class="dropdown-item waves-light" mdbWavesEffect
+                            href="#">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </links>
+        <!-- Collapsible content -->
+    </mdb-navbar>
+    <!--/.Navbar-->
+
+    <!-- Router Content -->
+    <div class="p-2 no">
+        <!-- <div class="d-flex "> -->
+        <div class="p-2 xd">
+            <router-outlet></router-outlet>
+        </div>
+        <!-- </div> -->
+    </div>
+    <!-- Router Content -->
+
+    <!-- Footer -->
+    <footer class="page-footer font-small">
+        <div class="footer text-center py-3 tableColor">MEAN Stack boilerplate built by:
+            <a href="https://github.com/kcsodetz/">@kcsodetz</a>
+        </div>
+    </footer>
+    <!-- Footer -->
+</div>
+<!-- Main App Contianer -->
