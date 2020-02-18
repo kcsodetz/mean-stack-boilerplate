@@ -116,8 +116,4 @@ Test /user/register completed.
 
 ## Authors
 
-* **Ken Sodetz** - ** - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
-
-## Acknowledgments
+* **Ken Sodetz** - [kcsodetz](https://github.com/kcsodetz)
