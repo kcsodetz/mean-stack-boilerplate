@@ -20,8 +20,7 @@ jobs:
     - run: cd backend/
     - run: pwd
     - run: ls -lsa
-    - run: npm install
-    - run: npm run build --if-present
+    - run: npm install backend
     - run: npm test
       env:
         CI: true
