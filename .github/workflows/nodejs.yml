@@ -17,10 +17,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - working-directory: ./backend
-    - run: pwd
-    - run: ls -lsa
-    - run: npm install backend
-    - run: npm test
+        working-directory: ./backend
+        run: | 
+          pwd
+          ls -lsa
+          npm install
+          npm test
       env:
         CI: true
