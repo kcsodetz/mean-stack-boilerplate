@@ -39,14 +39,21 @@ app.get('/', (res, req) => {
  */
 (async () => {
     try {
-        await mongoose.connect(process.env.MONGODB_HOST, { useNewUrlParser: true, useUnifiedTopology: true });
+        await mongoose.connect(process.env.MONGODB_HOST, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true });
     } catch (err) {
         console.log("Error Connecting to MongoDB Database");
     }
 
+    mongoose.set('useNewUrlParser', true);
     mongoose.set('useCreateIndex', true);
     mongoose.set('useFindAndModify', false);
     mongoose.set('bufferCommands', false);
+
+    mongoose.set('useNewUrlParser', true);
+    mongoose.set('useFindAndModify', false);
+    mongoose.set('useCreateIndex', true);
+    mongoose.set('useUnifiedTopology', true);
+
 })();
 
 app.listen(process.env.PORT, () => {
