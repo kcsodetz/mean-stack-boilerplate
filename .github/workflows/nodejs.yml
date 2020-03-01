@@ -24,9 +24,9 @@ jobs:
         MONGODB_HOST: ${{ secrets.MONGODB_HOST }}
         PORT: ${{ secrets.PORT }}
         JWT_SECRET: ${{ secrets.JWT_SECRET }}
-        EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
         TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
         TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
         TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+        EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
         EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
         CI: true
