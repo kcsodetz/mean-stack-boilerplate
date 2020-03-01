@@ -22,4 +22,5 @@ jobs:
     - run: cd backend/ && npm run build --if-present
     - run: cd backend/ && npm test
       env:
+        MONGODB_HOST: ${{ secrets.MONGODB_HOST }}
         CI: true
