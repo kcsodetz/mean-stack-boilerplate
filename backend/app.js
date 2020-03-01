@@ -1,13 +1,14 @@
 const express = require('express')
 let cookieParser = require('cookie-parser');
 var cors = require('cors');
+var mongoose = require('mongoose');
 const multer = require("multer");
 const cloudinary = require("cloudinary");
 const cloudinaryStorage = require("multer-storage-cloudinary");
 require('dotenv').config();
 
 /* Routes */
-let user = require('./routes/users.js'); 
+let user = require('./routes/users.js');
 
 const app = express(cors());
 
@@ -32,6 +33,21 @@ app.use('/user', user);
 
 app.get('/', (res, req) => {
 });
+
+/**
+ * MongoDb Database Connection 
+ */
+(async () => {
+    try {
+        await mongoose.connect(process.env.MONGODB_HOST, { useNewUrlParser: true, useUnifiedTopology: true });
+    } catch (err) {
+        console.log("Error Connecting to MongoDB Database");
+    }
+
+    mongoose.set('useCreateIndex', true);
+    mongoose.set('useFindAndModify', false);
+    mongoose.set('bufferCommands', false);
+})();
 
 app.listen(process.env.PORT, () => {
     console.log('The application is running on localhost:' + process.env.PORT)

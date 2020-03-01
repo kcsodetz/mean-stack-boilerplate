@@ -4,7 +4,7 @@
   "description": "App backend",
   "main": "app.js",
   "scripts": {
-    "test": "./test/runtest.sh"
+    "test": "mocha test/ --recursive --exit"
   },
   "author": "Ken Sodetz",
   "license": "ISC",
