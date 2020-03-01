@@ -31,7 +31,7 @@ describe('Test Change Email', () => {
                     .send(info)
                     .then((res) => {
                         token = res.header.token
-                        console.log(token)
+                        console.log(res.header)
                         done()
                     })
             })
