@@ -1,6 +1,18 @@
-var nodemailer = require('nodemailer');
+const nodemailer = require('nodemailer');
 
-var email_address = process.env.EMAIL_ADDRESS
+const email_address = process.env.EMAIL_ADDRESS;
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 465,
+    secure: true,
+    auth: {
+        type: 'OAuth2',
+        user: email_address,
+        clientId: process.env.OAUTH_CLIENT_ID,
+        clientSecret: process.env.OAUTH_CLIENT_SECRET,
+        refreshToken: process.env.OAUTH_REFRESH_TOKEN,
+    }
+});
 
 /**
  * Sends an email from the .env address to the specified 'to' email, with a subject and body given by the 
@@ -10,16 +22,7 @@ var email_address = process.env.EMAIL_ADDRESS
  * @param {string} body 
  */
 function mailer(to, subject, body) {
-    var transporter = nodemailer.createTransport({
-        host: 'smtp.gmail.com',
-        port: 587,
-        secure: false,
-        auth: {
-            user: email_address,
-            pass: process.env.EMAIL_PASS
-        }
-    });
-
+ 
     var mailOptions = {
         from: email_address,
         to: to,
@@ -28,10 +31,10 @@ function mailer(to, subject, body) {
     };
 
     // verify connection configuration
-    // console.log("Verifying...")
-    transporter.verify(function(error, success) {
+    transporter.verify(function (error, success) {
         if (error) {
-             console.log(error);
+            console.log("Transport Verification Error")
+            console.log(error);
         } else {
             // console.log('Server is ready to take our messages');
         }
