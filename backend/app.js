@@ -21,7 +21,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Authorization, token, Origin, X-Requested-With, Content-Type, Accept, username");
-
     res.header("Access-Control-Expose-Headers", "token");
     res.header('Access-Control-Allow-Credentials', 'true');
     next();
@@ -43,17 +42,6 @@ app.get('/', (res, req) => {
     } catch (err) {
         console.log("Error Connecting to MongoDB Database");
     }
-
-    mongoose.set('useNewUrlParser', true);
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useFindAndModify', false);
-    mongoose.set('bufferCommands', false);
-
-    mongoose.set('useNewUrlParser', true);
-    mongoose.set('useFindAndModify', false);
-    mongoose.set('useCreateIndex', true);
-    mongoose.set('useUnifiedTopology', true);
-
 })();
 
 app.listen(process.env.PORT, () => {
