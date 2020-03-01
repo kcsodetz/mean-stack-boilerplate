@@ -6,8 +6,7 @@ var should = require('chai').should();
 
 chai.use(chaiHttp);
 
-
-const uname = process.env.TEST_USERNAME;
+const uname = process.env.TEST_USERNAME + '_' + process.version;
 const pass = process.env.TEST_PASSWORD;
 const mail = process.env.TEST_EMAIL;
 const ROUTE = '/user/change-email';
@@ -52,6 +51,7 @@ describe('Test Change Email', () => {
                 .send()
                 .end((err, res) => {
                     res.should.have.status(400)
+                    res.body.should.have.property('message', 'User data is incomplete');
                     done()
                 })
         })
@@ -70,6 +70,7 @@ describe('Test Change Email', () => {
                 .send(info)
                 .end((err, res) => {
                     res.should.have.status(400)
+                    res.body.should.have.property('message', 'User data is incomplete');
                     done()
                 })
         });

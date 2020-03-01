@@ -6,7 +6,7 @@ var should = require('chai').should();
 
 chai.use(chaiHttp);
 
-const uname = process.env.TEST_USERNAME;
+const uname = process.env.TEST_USERNAME + '-' + process.version;
 const pword = process.env.TEST_PASSWORD;
 const mail = process.env.TEST_EMAIL;
 
@@ -195,5 +195,4 @@ describe('Register duplicate email', () => {
                 });
         })
     })
-
 })

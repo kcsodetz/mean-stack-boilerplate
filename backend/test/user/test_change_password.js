@@ -7,7 +7,7 @@ var should = require('chai').should();
 chai.use(chaiHttp);
 
 
-const uname = process.env.TEST_USERNAME;
+const uname = process.env.TEST_USERNAME + '_' + process.version;
 const pass = process.env.TEST_PASSWORD;
 const mail = process.env.TEST_EMAIL;
 const ROUTE = '/user/change-password';
