@@ -29,4 +29,5 @@ jobs:
         TEST_USERNAME: ${{ secrets.TEST_USERNAME }}
         TEST_PASSWORD: ${{ secrets.TEST_PASSWORD }}
         TEST_EMAIL: ${{ secrets.TEST_EMAIL }}
+        EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
         CI: true
