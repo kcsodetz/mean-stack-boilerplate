@@ -70,7 +70,7 @@ describe('Test Change Email', () => {
                 .send(info)
                 .end((err, res) => {
                     res.should.have.status(400)
-                    res.body.should.have.property('message', 'User data is incomplete');
+                    res.body.should.have.property('message', 'Invalid email');
                     done()
                 })
         });
