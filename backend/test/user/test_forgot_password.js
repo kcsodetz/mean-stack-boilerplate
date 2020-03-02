@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 const uname = process.env.TEST_USERNAME + '_' + process.version;
 const pword = process.env.TEST_PASSWORD;
-const mail = process.env.TEST_EMAIL;
+const mail = process.version + '-' + process.env.TEST_EMAIL;
 const ROUTE = '/user/forgot-password';
 
 describe('Test Forgot Password', () => {

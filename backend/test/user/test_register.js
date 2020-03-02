@@ -8,7 +8,7 @@ chai.use(chaiHttp);
 
 const uname = process.env.TEST_USERNAME + '-' + process.version;
 const pword = process.env.TEST_PASSWORD;
-const mail = process.env.TEST_EMAIL;
+const mail = process.version + '-' + process.env.TEST_EMAIL;
 
 const secondary_uname = 'unit-test-2';
 
