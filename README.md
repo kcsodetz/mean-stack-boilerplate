@@ -1,7 +1,8 @@
 # MEAN Stack Boilerplate
 
 This MEAN (Mongo, Express, Angular, and Node) Stack boilerplate is what I use for all my web projects.
-
+##
+![Node.js CI](https://github.com/kcsodetz/mean-stack-boilerplate/workflows/Node.js%20CI/badge.svg)
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
