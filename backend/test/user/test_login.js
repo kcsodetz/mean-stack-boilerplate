@@ -24,7 +24,6 @@ describe('Test Login', () => {
             .set('content-type', 'application/x-www-form-urlencoded')
             .send(req)
             .end((err, res) => {
-                console.log(res.body);
                 res.should.have.status(200);
                 done();
             });
