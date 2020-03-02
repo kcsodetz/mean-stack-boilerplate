@@ -10,8 +10,6 @@ const uname = process.env.TEST_USERNAME + '-' + process.version;
 const pword = process.env.TEST_PASSWORD;
 const mail = process.env.TEST_EMAIL;
 
-console.log(uname)
-
 const secondary_uname = 'unit-test-2';
 
 const ROUTE = '/user/register'
