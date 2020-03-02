@@ -19,25 +19,37 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Running a Dev Environment
 
-1) Create a `.env` file in `backend/`
+1) Using the `env.sample` file as a template, create your own .env file for essential environment variables.
 
     ```sh
-    touch backend/.env
+	$ cd backend/
+    $ cp env.sample .env
     ```
 
-2) Add the following variables and values to the `.env` file
+2) Change the values in the newly created `.env` file.
 
     ```file
-    MONGODB_HOST=mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[database][?options]]
-    PORT=[port number]
-    JWT_SECRET=[JSON web token]
-    EMAIL_ADDRESS=[email address]
-    TEST_USERNAME=[unit test name]
-    TEST_PASSWORD=[unit test password]
-    TEST_EMAIL=[unit test email]
-    OAUTH_CLIENT_ID=[oauth client ID]
-    OAUTH_CLIENT_SECRET=[oauth client secret]
-    OAUTH_REFRESH_TOKEN=[oauth refresh token]
+	# Mongo connection driver
+	MONGODB_HOST=mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[database][?options]]
+
+	# Port number
+	PORT=[port number]
+
+	# JWT Secret for token authentication
+	JWT_SECRET=[JSON web token]
+
+	# Email address for mail notifications
+	EMAIL_ADDRESS=[email address]
+
+	# Username, password, and email for unit tests
+	TEST_USERNAME=[unit test name]
+	TEST_PASSWORD=[unit test password]
+	TEST_EMAIL=[unit test email]
+
+	# OAuth Client ID, secret, and refresh token for nodemailer
+	OAUTH_CLIENT_ID=[oauth client ID]
+	OAUTH_CLIENT_SECRET=[oauth client secret]
+	OAUTH_REFRESH_TOKEN=[oauth refresh token] 
     ```
 
    * MONGODB_HOST - [Connection driver](https://docs.atlas.mongodb.com/driver-connection/) for mongodb.
@@ -51,7 +63,7 @@ These instructions will get you a copy of the project up and running on your loc
    * OAUTH_CLIENT_SECRET - Client secret from [Google developers console](developers.google.com).
    * OAUTH_REFRESH_TOKEN - Client ID from [Google OAuth](https://developers.google.com/oauthplayground/).
 
-3) To start the backend, navigate to `backend/` and run:
+3) From the backend directory, run the following to start the local node app.
 
     ```sh
     $ node app.js
