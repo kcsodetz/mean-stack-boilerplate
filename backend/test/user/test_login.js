@@ -24,6 +24,7 @@ describe('Test Login', () => {
             .set('content-type', 'application/x-www-form-urlencoded')
             .send(req)
             .end((err, res) => {
+                console.log(res.body);
                 res.should.have.status(200);
                 done();
             });
@@ -118,10 +119,10 @@ describe('Test Login', () => {
                 .send(req)
                 .end((err, res) => {
                     res.should.have.status(200);
-                    res.header.should.have.property('token')
-                    res.body.should.have.property('_id')
-                    res.body.should.have.property('username')
-                    res.body.should.have.property('email')
+                    res.header.should.have.property('token');
+                    res.body.should.have.property('_id');
+                    res.body.should.have.property('username');
+                    res.body.should.have.property('email');
                     done();
                 })
         })
