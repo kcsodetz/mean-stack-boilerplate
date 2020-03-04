@@ -130,6 +130,7 @@ Test /user/register completed.
 * [AngularJS](https://angularjs.org/) - Frontend framework
 * [ExpressJS](https://expressjs.com/) - Backend framework
 * [NodeJS](https://nodejs.org/en/) - JS runtime environment
+* [Material Design Bootstrap for Angular](https://mdbootstrap.com/docs/angular/) - Frontend UI Tookkit
 
 ## Authors
 
