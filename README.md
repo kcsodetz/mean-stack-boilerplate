@@ -94,9 +94,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Running the tests
 
-Tests are done with the the mocha and chai frameworks. Only back end tests have been written. To run, navigate to the root of the `backend/` folder and run:
+Tests are done with the the mocha and chai frameworks. Only back end tests have been written. 
 
-```sh
+```
 $ npm test
 > backend@1.0.0 test projects/mean-stack-boilerplate/backend
 > mocha test/ --recursive --exit
@@ -106,22 +106,22 @@ The application is running on localhost:5000
 
   Test Change Email
     Change email without email
-      ✓ Should return 400 (83ms)
+      ✓ Should return 400
     Change email with invalid email
-      ✓ Should return 400 (62ms)
+      ✓ Should return 400
     Change email with invalid auth
       ✓ Should return 401
     Change email with correct info
-      ✓ Should return 200 (136ms)
+      ✓ Should return 200
 Test /user/change-email completed.
 
   Test Change Password
     Change email without email
-      ✓ Should return 400 (51ms)
+      ✓ Should return 400
     Change password with invalid auth
       ✓ Should return 401
     Change password with correct info
-      ✓ Should return 200 (216ms)
+      ✓ Should return 200
 Test /user/change-password completed.
 
 ...
