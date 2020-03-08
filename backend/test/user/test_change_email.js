@@ -29,7 +29,6 @@ describe('Test Change Email', () => {
                     .set('content-type', 'application/x-www-form-urlencoded')
                     .send(info)
                     .then((res) => {
-                        console.log(res.body);
                         res.should.have.status(200);
                         token = res.header.token;
                         done();
