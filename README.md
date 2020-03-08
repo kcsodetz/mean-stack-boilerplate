@@ -14,8 +14,14 @@ These instructions will get you a copy of the project up and running on your loc
     ```sh
     sudo apt-get install nodejs
     ```
+    
+2) Create an email to use be used by the mailer middleware. This project uses the [nodemailer](https://nodemailer.com/about/) package to send emails to users. 
 
-2) Create a mongodb cluster and get the nodeJS [connection driver](https://docs.atlas.mongodb.com/driver-connection/).
+ 	__NOTE:__ In this project, the Gmail suite is used. For other email services, modifications will need to be made to `backend/middleware/mailer.js`.
+
+3) Create a mongodb cluster and get the nodeJS [connection driver](https://docs.atlas.mongodb.com/driver-connection/).
+
+4) Create an OAuth token through Google. Nick Roach has an excellent [medium arcicle](https://medium.com/@nickroach_50526/sending-emails-with-node-js-using-smtp-gmail-and-oauth2-316fe9c790a1) on how to do just that. This will be for the mailer middleware. 
 
 ### Running a Dev Environment
 
@@ -55,12 +61,12 @@ These instructions will get you a copy of the project up and running on your loc
    * MONGODB_HOST - [Connection driver](https://docs.atlas.mongodb.com/driver-connection/) for mongodb.
    * PORT - Backend port number.
    * JWT_SECRET - JWT secret for token authentication.
-   * EMAIL_ADDRESS - Email address for mail notifications (user registration, user password reset, etc).
+   * EMAIL_ADDRESS - Email address for mail notifications (user registration, user password reset, etc). This example uses __gmail__. 
    * TEST_USERNAME - Username for unit testing.
    * TEST_PASSWORD - Password for unit testing.
-   * TEST_EMAIL - Email for unit testing.
-   * OAUTH_CLIENT_ID - Client ID from [Google developers console](developers.google.com).
-   * OAUTH_CLIENT_SECRET - Client secret from [Google developers console](developers.google.com).
+   * TEST_EMAIL - Email for unit testing. 
+   * OAUTH_CLIENT_ID - Client ID from [Google developers console](https://developers.google.com).
+   * OAUTH_CLIENT_SECRET - Client secret from [Google developers console](https://developers.google.com).
    * OAUTH_REFRESH_TOKEN - Client ID from [Google OAuth](https://developers.google.com/oauthplayground/).
 
 3) From the backend directory, run the following to start the local node app.
@@ -88,38 +94,35 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Running the tests
 
-Tests are done with the the mocha and chai frameworks. Only back end tests have been written. To run, navigate to the root of the `backend/` folder and run:
+Tests are done with the the mocha and chai frameworks. Only back end tests have been written. 
 
-```sh
+```
 $ npm test
-USER TESTS
-------------------------------------------------------------------------
-
+> backend@1.0.0 test projects/mean-stack-boilerplate/backend
+> mocha test/ --recursive --exit
 
 The application is running on localhost:5000
-  Test Register
-    Register without password
+
+
+  Test Change Email
+    Change email without email
       ✓ Should return 400
-    Register without username
+    Change email with invalid email
       ✓ Should return 400
-    Register without email
-      ✓ Should return 400
-    Register with invalid email
-      ✓ Should return 400
-    Register with short username
-      ✓ Should return 400
-    Register with short password
-      ✓ Should return 400
-    Register with correct info
+    Change email with invalid auth
+      ✓ Should return 401
+    Change email with correct info
       ✓ Should return 200
-    Register duplicate username
-      ✓ Should return 400
-    Register duplicate email
-      ✓ Should return 400
-Test /user/register completed.
+Test /user/change-email completed.
 
-
-  9 passing (1s)
+  Test Change Password
+    Change email without email
+      ✓ Should return 400
+    Change password with invalid auth
+      ✓ Should return 401
+    Change password with correct info
+      ✓ Should return 200
+Test /user/change-password completed.
 
 ...
 ```
@@ -130,6 +133,7 @@ Test /user/register completed.
 * [AngularJS](https://angularjs.org/) - Frontend framework
 * [ExpressJS](https://expressjs.com/) - Backend framework
 * [NodeJS](https://nodejs.org/en/) - JS runtime environment
+* [Material Design Bootstrap for Angular](https://mdbootstrap.com/docs/angular/) - Frontend UI Tookkit
 
 ## Authors
 
