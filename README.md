@@ -3,7 +3,10 @@
 This MEAN (Mongo, Express, Angular, and Node) Stack boilerplate is what I use for all my web projects.
 ##
 ![Node.js CI](https://github.com/kcsodetz/mean-stack-boilerplate/workflows/Node.js%20CI/badge.svg)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](http://choosealicense.com/licenses/mit/)
+
 ## Getting Started
+
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -135,6 +138,13 @@ Test /user/change-password completed.
 * [NodeJS](https://nodejs.org/en/) - JS runtime environment
 * [Material Design Bootstrap for Angular](https://mdbootstrap.com/docs/angular/) - Frontend UI Tookkit
 
-## Authors
+## License
+
+This project is licensed under the MIT License. See the [LICENSE.md](https://github.com/kcsodetz/Gastimate/blob/master/LICENSE.md) for details
+
+## Author
 
 * **Ken Sodetz** - [kcsodetz](https://github.com/kcsodetz)
+
+## Acknowledgements
+* Based on a project by **Keith Tan** - [keithatan](https://github.com/keithatan)
