@@ -28,7 +28,6 @@ router.get("/", function (req, res) {
     res.send('This route is for all user related tasks');
 });
 
-
 /**
  * Get account information
  */

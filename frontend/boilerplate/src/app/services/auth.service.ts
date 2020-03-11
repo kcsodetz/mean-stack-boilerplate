@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthData } from '../models/auth-data.model';
-import { Subject, Observable } from 'rxjs';
+import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
 import { map } from 'rxjs/operators';
 
@@ -22,48 +22,51 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) { }
 
-    registerUser(email: string, username: string, password: string) {
+
+    /**
+     * Register a new user
+     * @param email New user's email
+     * @param username New user's username
+     * @param password New user's password
+     */
+    public registerUser(email: string, username: string, password: string) {
         const auth: AuthData = { email: email, username: username, password: password };
         return this.http.post<Object>('http://localhost:5000/user/register', auth).toPromise();
     }
 
-    forgotPassword(email: string) {
+    /**
+     * Reset password if forgotten by user email
+     * @param email User's email
+     */
+    public forgotPassword(email: string) {
         const auth: AuthData = { username: '', password: '', email: email };
         return this.http.post<Object>('http://localhost:5000/user/forgot-password', auth).toPromise();
     }
 
-    changePassword(newPassword: string) {
+    /**
+     * Change user's password
+     * @param newPassword User's new password
+     */
+    public changePassword(newPassword: string) {
         const auth: AuthData = { username: '', password: newPassword, email: '' };
         return this.http.post<Object>('http://localhost:5000/user/change-password', auth).toPromise();
     }
 
-    changeEmail(newEmail: string) {
+    /**
+     * Change user's email
+     * @param newEmail User's new email address
+     */
+    public changeEmail(newEmail: string) {
         const auth: AuthData = { username: '', password: '', email: newEmail };
         return this.http.post<Object>('http://localhost:5000/user/change-email', auth).toPromise();
     }
 
-    getAuthToken() {
-        if (localStorage['token']) {
-            return localStorage['token'];
-        }
-        return false;
-    }
-
-    getAuthenticationStatus() {
-        return this.isAuthenticated;
-    }
-
-    getAuthStatObservible() {
-        return new Observable<boolean>(observer => {
-            if (localStorage['token']) {
-                observer.next(true);
-            } else {
-                observer.next(false);
-            }
-        });
-    }
-
-    async login(username: string, password: string) {
+    /**
+     * Async function to log in a user
+     * @param username User's username
+     * @param password User's password
+     */
+    public async login(username: string, password: string) {
         const auth: AuthData = { username: username, password: password, email: '' };
         await this.http.post('http://localhost:5000/user/login', auth, httpOptions).pipe(
             map(response => {
@@ -86,7 +89,7 @@ export class AuthService {
                 if (error.error.message === 'Account has not been verified, please verify your account') {
                     this.response_login = 'verify';
                 } else if (error.error.message === 'Error: Password is incorrect') {
-                   this.response_login = 'badPass';
+                    this.response_login = 'badPass';
                 } else if (error.error.message === 'Error: User does not exist, register before logging in') {
                     this.response_login = 'DNE';
                 } else {
@@ -96,11 +99,10 @@ export class AuthService {
         return this.response_login;
     }
 
-    getResponseLogin() {
-        return this.response_login;
-    }
-
-    logout() {
+    /**
+     * Log out current user
+     */
+    public logout() {
         this.token = null;
         this.isAuthenticated = false;
         this.authStatusListener.next(false);
@@ -108,21 +110,53 @@ export class AuthService {
         this.clearLocalStorage();
     }
 
+    /**
+     * Get user's current auth token from local storage
+     */
+    public getAuthToken() {
+        if (localStorage['token']) {
+            return localStorage['token'];
+        }
+        return false;
+    }
+
+    /**
+     * Get auth status as a boolean
+     */
+    public getAuthenticationStatus() {
+        return this.isAuthenticated;
+    }
+
+    /**
+     * Add authentication data to browser's local storage
+     * @param token User's authentication token
+     * @param expirationDate User's experation time
+     */
     private addAuthToLocalStorage(token: string, expirationDate: Date) {
         localStorage.setItem('token', token);
         localStorage.setItem('expiresIn', expirationDate.toISOString());
     }
 
+    /**
+     * Clears all local storage from browser
+     */
     private clearLocalStorage() {
         localStorage.clear();
     }
 
+    /**
+     * Set token duration
+     * @param duration Token validity duration
+     */
     private setAuthTimer(duration: number) {
         this.tokenTimer = setTimeout(() => {
             this.logout();
         }, duration * 1000);
     }
 
+    /**
+     * Get authentication data from browser's local storage, including auth token and expiration time
+     */
     public getAuthData() {
         const token = localStorage['token'];
         const expirationDate = localStorage['expiresIn'];
@@ -135,7 +169,10 @@ export class AuthService {
         };
     }
 
-    autoAuthUser() {
+    /**
+     * Automatically authenticates current user from auth info
+     */
+    public autoAuthUser() {
         const authInformation = this.getAuthData();
         if (!authInformation) {
             return;

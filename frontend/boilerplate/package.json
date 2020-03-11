@@ -1,6 +1,7 @@
 {
-  "name": "boilerplate",
-  "version": "0.0.0",
+  "name": "mean-stack-boilerplate",
+  "description": "App frontend",
+  "version": "0.1.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
