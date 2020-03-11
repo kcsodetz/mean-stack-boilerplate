@@ -37,6 +37,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h4').textContent).toContain('boilerplate');
+    expect(compiled.querySelector('h4').textContent).toContain('My App');
   });
 });
