@@ -7,9 +7,6 @@ var authenticate = require('../middleware/authenticate');
 var mailer = require('../middleware/mailer');
 var validate_email = require('../middleware/validate_email');
 
-mongoose.connect(process.env.MONGODB_HOST, { useNewUrlParser: true, useUnifiedTopology: true });
-mongoose.set('useCreateIndex', true);
-mongoose.set('useFindAndModify', false);
 
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;

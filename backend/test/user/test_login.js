@@ -6,9 +6,9 @@ var should = require('chai').should();
 
 chai.use(chaiHttp);
 
-const uname = process.env.TEST_USERNAME;
+const uname = process.env.TEST_USERNAME + '-' + process.version;
 const pword = process.env.TEST_PASSWORD;
-const mail = process.env.TEST_EMAIL;
+const mail = process.version + '-' + process.env.TEST_EMAIL;
 const ROUTE = '/user/login';
 
 describe('Test Login', () => {
@@ -118,10 +118,10 @@ describe('Test Login', () => {
                 .send(req)
                 .end((err, res) => {
                     res.should.have.status(200);
-                    res.header.should.have.property('token')
-                    res.body.should.have.property('_id')
-                    res.body.should.have.property('username')
-                    res.body.should.have.property('email')
+                    res.header.should.have.property('token');
+                    res.body.should.have.property('_id');
+                    res.body.should.have.property('username');
+                    res.body.should.have.property('email');
                     done();
                 })
         })

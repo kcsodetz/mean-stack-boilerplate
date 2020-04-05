@@ -6,10 +6,9 @@ var should = require('chai').should();
 
 chai.use(chaiHttp);
 
-
-const uname = process.env.TEST_USERNAME;
+const uname = process.env.TEST_USERNAME + '_' + process.version;
 const pass = process.env.TEST_PASSWORD;
-const mail = process.env.TEST_EMAIL;
+const mail = process.version + '-' + process.env.TEST_EMAIL;
 const ROUTE = '/user/change-email';
 var token;
 
@@ -30,8 +29,9 @@ describe('Test Change Email', () => {
                     .set('content-type', 'application/x-www-form-urlencoded')
                     .send(info)
                     .then((res) => {
-                        token = res.header.token
-                        done()
+                        res.should.have.status(200);
+                        token = res.header.token;
+                        done();
                     })
             })
     })
@@ -51,7 +51,8 @@ describe('Test Change Email', () => {
                 .set('token', token)
                 .send()
                 .end((err, res) => {
-                    res.should.have.status(400)
+                    res.should.have.status(400);
+                    res.body.should.have.property('message', 'User data is incomplete');
                     done()
                 })
         })
@@ -69,8 +70,9 @@ describe('Test Change Email', () => {
                 .set('token', token)
                 .send(info)
                 .end((err, res) => {
-                    res.should.have.status(400)
-                    done()
+                    res.should.have.status(400);
+                    res.body.should.have.property('message', 'Invalid email');
+                    done();
                 })
         });
     })
@@ -86,8 +88,8 @@ describe('Test Change Email', () => {
                 .set('token', 'bad auth')
                 .send(info)
                 .end((err, res) => {
-                    res.should.have.status(401)
-                    done()
+                    res.should.have.status(401);
+                    done();
                 })
         });
     })
@@ -104,8 +106,8 @@ describe('Test Change Email', () => {
                 .send(info)
                 .end((err, res) => {
                     res.body.should.have.property('message','User email successfully updated');
-                    res.should.have.status(200)
-                    done()
+                    res.should.have.status(200);
+                    done();
                 })
         })
     })

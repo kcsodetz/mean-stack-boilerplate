@@ -6,16 +6,18 @@ var should = require('chai').should();
 
 chai.use(chaiHttp);
 
-const uname = process.env.TEST_USERNAME;
+const uname = process.env.TEST_USERNAME + '-' + process.version;
 const pword = process.env.TEST_PASSWORD;
-const mail = process.env.TEST_EMAIL;
+const mail = process.version + '-' + process.env.TEST_EMAIL;
+
+const secondary_uname = 'unit-test-2';
 
 const ROUTE = '/user/register'
 
 describe('Test Register', () => {
 
     after((done) => {
-        User.deleteOne({ username: uname }).then(() => {
+        User.deleteMany({ username: { $in: [uname, secondary_uname] }}).then(() => {
             console.log("Test " + ROUTE + " completed.");
             done();
         });
@@ -177,7 +179,7 @@ describe('Register with short password', () => {
 
 describe('Register duplicate email', () => {
         let req = {
-            username: "unit-test-2",
+            username: secondary_uname,
             password: pword,
             email: mail
         }
@@ -193,5 +195,4 @@ describe('Register duplicate email', () => {
                 });
         })
     })
-
 })
