@@ -21,7 +21,7 @@
     "fs": "0.0.1-security",
     "googleapis": "^67.0.0",
     "jsonwebtoken": "^8.4.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "mocha": "^7.1.1",
     "mongoose": "^5.9.7",
     "mquery": "^3.2.3",
