@@ -20,7 +20,7 @@
     "express": "^4.16.4",
     "fs": "0.0.1-security",
     "googleapis": "^67.0.0",
-    "jsonwebtoken": "^8.4.0",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.20",
     "mocha": "^7.1.1",
     "mongoose": "^5.9.7",
